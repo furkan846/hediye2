@@ -15,7 +15,8 @@
             text-align: center;
             margin: 0;
             padding: 30px 15px; 
-            overflow-x: hidden; /* Ekrandan taşmaları gizler */
+            overflow-x: hidden; 
+            position: relative;
         }
         h1 {
             font-size: 2em; 
@@ -46,6 +47,7 @@
             width: 100%;
             position: relative;
             z-index: 10;
+            padding-bottom: 50px;
         }
         .polaroid {
             background: #fff;
@@ -75,47 +77,58 @@
             color: #555;
         }
 
-        /* --- ÇİÇEK ANİMASYONLARI --- */
-        .flower {
-            position: fixed; /* Ekranı kaydırsa da çiçekler yerinde kalır */
-            pointer-events: none; /* Çiçeklerin altındaki şeylere tıklanabilmesini sağlar */
-            z-index: 100;
-            opacity: 0;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        /* --- GÜL YAPRAĞI ANİMASYONU --- */
+        .petal {
+            position: fixed;
+            top: -10vh; /* Ekranın üstünden başlar */
+            pointer-events: none; /* Tıklanmayı engellemez */
+            z-index: 5;
+            background-image: url('https://cdn.pixabay.com/photo/2014/04/02/10/38/rose-304090_1280.png'); /* Şeffaf gerçek gül yaprağı */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            animation: fall linear infinite;
         }
-        
-        /* Sol Taraftan Çıkanlar */
-        .flower.left { left: -50px; }
-        .f1 { top: 10%; font-size: 40px; animation: popLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards; }
-        .f2 { top: 40%; font-size: 30px; animation: popLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards; }
-        .f3 { top: 70%; font-size: 45px; animation: popLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards; }
 
-        /* Sağ Taraftan Çıkanlar */
-        .flower.right { right: -50px; }
-        .f4 { top: 15%; font-size: 35px; animation: popRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.7s forwards; }
-        .f5 { top: 45%; font-size: 45px; animation: popRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards; }
-        .f6 { top: 75%; font-size: 30px; animation: popRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.7s forwards; }
+        /* Yaprakların Farklı Boyutları, Pozisyonları ve Hızları */
+        .p1 { left: 10%; width: 40px; height: 40px; animation-duration: 9s; animation-delay: 0s; }
+        .p2 { left: 30%; width: 25px; height: 25px; animation-duration: 12s; animation-delay: 2s; }
+        .p3 { left: 50%; width: 50px; height: 50px; animation-duration: 8s; animation-delay: 4s; }
+        .p4 { left: 70%; width: 35px; height: 35px; animation-duration: 11s; animation-delay: 1s; }
+        .p5 { left: 85%; width: 45px; height: 45px; animation-duration: 10s; animation-delay: 3s; }
+        .p6 { left: 20%; width: 30px; height: 30px; animation-duration: 13s; animation-delay: 5s; }
+        .p7 { left: 80%; width: 38px; height: 38px; animation-duration: 9.5s; animation-delay: 6s; }
 
-        @keyframes popLeft {
-            0% { left: -50px; opacity: 0; transform: scale(0.5) rotate(-45deg); }
-            100% { left: 10px; opacity: 1; transform: scale(1) rotate(15deg); }
-        }
-        @keyframes popRight {
-            0% { right: -50px; opacity: 0; transform: scale(0.5) rotate(45deg); }
-            100% { right: 10px; opacity: 1; transform: scale(1) rotate(-15deg); }
+        @keyframes fall {
+            0% {
+                top: -10vh;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8; /* Gökten girerken görünür olur */
+            }
+            50% {
+                transform: translateX(40px) rotate(180deg); /* Sağa doğru salınım */
+            }
+            100% {
+                top: 110vh; /* Ekranın altına düşer */
+                transform: translateX(-40px) rotate(360deg); /* Sola doğru salınım */
+                opacity: 0; /* Kaybolur */
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Çiçek Süslemeleri -->
-    <div class="flower left f1">🌸</div>
-    <div class="flower left f2">🌺</div>
-    <div class="flower left f3">🌷</div>
-    
-    <div class="flower right f4">🌼</div>
-    <div class="flower right f5">🌸</div>
-    <div class="flower right f6">🌻</div>
+    <!-- Gül Yaprakları -->
+    <div class="petal p1"></div>
+    <div class="petal p2"></div>
+    <div class="petal p3"></div>
+    <div class="petal p4"></div>
+    <div class="petal p5"></div>
+    <div class="petal p6"></div>
+    <div class="petal p7"></div>
 
     <h1>Sana Özel Bir Frekans</h1>
     <p class="subtitle">Kelimelerin yetmediği yerde müzik başlar...</p>
