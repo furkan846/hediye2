@@ -77,27 +77,26 @@
             color: #555;
         }
 
-        /* --- GÜL YAPRAĞI ANİMASYONU --- */
+        /* --- GÜL YAPRAĞI ANİMASYONU (Garantili Vektör) --- */
         .petal {
             position: fixed;
-            top: -10vh; /* Ekranın üstünden başlar */
-            pointer-events: none; /* Tıklanmayı engellemez */
+            top: -10vh;
+            pointer-events: none;
             z-index: 5;
-            background-image: url('https://cdn.pixabay.com/photo/2014/04/02/10/38/rose-304090_1280.png'); /* Şeffaf gerçek gül yaprağı */
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.8;
+            background-color: #d93848; /* Canlı gül kırmızısı */
+            border-radius: 150% 0% 150% 0%; /* Doğal yaprak kıvrımı */
+            box-shadow: inset -3px -3px 8px rgba(0,0,0,0.2);
+            opacity: 0.85;
             animation: fall linear infinite;
         }
 
-        /* Yaprakların Farklı Boyutları, Pozisyonları ve Hızları */
-        .p1 { left: 10%; width: 40px; height: 40px; animation-duration: 9s; animation-delay: 0s; }
-        .p2 { left: 30%; width: 25px; height: 25px; animation-duration: 12s; animation-delay: 2s; }
-        .p3 { left: 50%; width: 50px; height: 50px; animation-duration: 8s; animation-delay: 4s; }
-        .p4 { left: 70%; width: 35px; height: 35px; animation-duration: 11s; animation-delay: 1s; }
-        .p5 { left: 85%; width: 45px; height: 45px; animation-duration: 10s; animation-delay: 3s; }
-        .p6 { left: 20%; width: 30px; height: 30px; animation-duration: 13s; animation-delay: 5s; }
-        .p7 { left: 80%; width: 38px; height: 38px; animation-duration: 9.5s; animation-delay: 6s; }
+        .p1 { left: 10%; width: 28px; height: 38px; animation-duration: 8s; animation-delay: 0s; }
+        .p2 { left: 30%; width: 20px; height: 28px; animation-duration: 11s; animation-delay: 2s; }
+        .p3 { left: 50%; width: 35px; height: 45px; animation-duration: 7s; animation-delay: 4s; }
+        .p4 { left: 70%; width: 24px; height: 32px; animation-duration: 10s; animation-delay: 1s; }
+        .p5 { left: 85%; width: 30px; height: 40px; animation-duration: 9s; animation-delay: 3s; }
+        .p6 { left: 20%; width: 22px; height: 30px; animation-duration: 12s; animation-delay: 5s; }
+        .p7 { left: 80%; width: 26px; height: 36px; animation-duration: 8.5s; animation-delay: 6s; }
 
         @keyframes fall {
             0% {
@@ -106,15 +105,15 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.8; /* Gökten girerken görünür olur */
+                opacity: 0.85;
             }
             50% {
-                transform: translateX(40px) rotate(180deg); /* Sağa doğru salınım */
+                transform: translateX(45px) rotate(180deg);
             }
             100% {
-                top: 110vh; /* Ekranın altına düşer */
-                transform: translateX(-40px) rotate(360deg); /* Sola doğru salınım */
-                opacity: 0; /* Kaybolur */
+                top: 110vh;
+                transform: translateX(-45px) rotate(360deg);
+                opacity: 0;
             }
         }
     </style>
